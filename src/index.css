@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #111827;
+  --color-text: #d1d5db;
+  --color-accent: #646cff;
+  --color-accent-hover: #535bf2;
+  --color-border: #374151;
+}
+
+* {
+  box-sizing: border-box;
+  /* margin: 0;
+  padding: 0; */
+}
+
+body {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  min-height: 100vh;
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+details {
+  display: block;
+  width: 100%;
+}
+
+details summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::marker {
+  display: none;
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.border-accent {
+  border-color: var(--color-accent);
+}
+
+.border-light {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.hover\:text-accent:hover {
+  color: var(--color-accent-hover);
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  background: transparent;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}

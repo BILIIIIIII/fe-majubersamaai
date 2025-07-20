@@ -1,0 +1,14 @@
+/* ===== RESPONSIVE HELPERS ===== */
+@layer utilities {
+  .responsive-padding {
+    @apply px-4 py-2 sm:px-6 sm:py-4;
+  }
+
+  .responsive-text {
+    @apply text-sm sm:text-base;
+  }
+
+  .responsive-rounded {
+    @apply rounded-xl sm:rounded-2xl;
+  }
+}
