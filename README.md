@@ -1,60 +1,136 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# MajuBersamaAI Frontend
 
-Currently, two official plugins are available:
+This is the **React + TypeScript + Vite**–based frontend for the Hacktiv8 “MajubersamaAI” final project. It provides a minimal, high‑performance setup with hot reloading, ESLint rules, and easy configuration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> **Note:** to run this frontend locally, you must also run the backend. You can find and clone it here:  
+> **https://github.com/BILIIIIIII/be-majubersamaai**
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Table of Contents
+
+1. [Prerequisites](#prerequisites)  
+2. [Getting Started](#getting-started)  
+3. [Running Frontend & Backend](#running-frontend--backend)  
+4. [Available Scripts](#available-scripts)  
+5. [ESLint Configuration](#eslint-configuration)  
+   - [Type‑Aware Rules (Prod)](#type‑aware-rules-prod)  
+   - [Optional React‑Specific Plugins](#optional-react‑specific-plugins)  
+6. [Structure & Plugins](#structure--plugins)  
+7. [License](#license)
+
+---
+
+## Prerequisites
+
+- **Node.js** (v16+) and **npm** or **Yarn**  
+- **Git**  
+- A running copy of the **MajubersamaAI** backend (see link above)
+
+---
+
+## Getting Started
+
+1. Clone this repository:  
+
+   ```bash
+   git clone https://github.com/BILIIIIIII/fe-majubersamaai.git
+   cd fe-majubersamaai
+2. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   bun install
+   ```
+
+3. Copy your environment variables (if any) into `.env.local`.
+
+---
+
+## Running Frontend & Backend
+
+1. **Start the backend**
+
+   ```bash
+   cd ../be-majubersamaai
+   npm install
+   npm run dev
+   ```
+
+   By default, the backend runs at `http://localhost:8080`.
+
+2. **Start the frontend**
+   In a separate terminal:
+
+   ```bash
+   cd fe-majubersamaai
+   npm run dev
+   ```
+
+   Visit `http://localhost:5173` in your browser.
+
+---
+
+## Available Scripts
+
+* `npm run dev` – run Vite’s development server (HMR + fast refresh)
+* `npm run build` – bundle for production
+* `npm run serve` – locally preview your production build
+* `npm run lint` – run ESLint across the project
+
+---
+
+## ESLint Configuration
+
+This project ships with a basic ESLint setup. For a production‑grade app, enable type‑aware rules:
+
+### Type‑Aware Rules (Prod)
 
 ```js
+// eslint.config.js
+import tseslint from "typescript-eslint";
+
 export default tseslint.config([
-  globalIgnores(['dist']),
+  // ignore build output
+  tseslint.globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
+      // Type‑checked, recommended rules
       ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
+      // (Optional) Stricter ruleset
+      // ...tseslint.configs.strictTypeChecked,
+      // (Optional) Stylistic rules
+      // ...tseslint.configs.stylisticTypeChecked,
     ],
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
-      // other options...
     },
   },
-])
+]);
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Optional React‑Specific Plugins
+
+You can further strengthen linting with React‑focused rules:
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+import tseslint from "typescript-eslint";
+import reactX from 'eslint-plugin-react-x';
+import reactDom from 'eslint-plugin-react-dom';
 
 export default tseslint.config([
-  globalIgnores(['dist']),
+  tseslint.globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      // Other configs...
-      // Enable lint rules for React
       reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
       reactDom.configs.recommended,
     ],
     languageOptions: {
@@ -62,8 +138,18 @@ export default tseslint.config([
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
-      // other options...
     },
   },
-])
+]);
 ```
+
+---
+
+## Structure & Plugins
+
+- **Vite** with HMR
+- **React** + **TypeScript**
+- Official plugins supported:
+
+  - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react) (Babel‑based Fast Refresh)
+  - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) (SWC‑based Fast Refresh)
